@@ -1,0 +1,65 @@
+html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Schere, Stein, Papier</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        #result {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        #buttons {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Schere, Stein, Papier</h1>
+    <div id="result"></div>
+    <div id="buttons">
+        <button onclick="play('Schere')">Schere</button>
+        <button onclick="play('Stein')">Stein</button>
+        <button onclick="play('Papier')">Papier</button>
+    </div>
+
+    <script>
+        function play(userChoice) {
+            var choices = ['Schere', 'Stein', 'Papier'];
+            var computerChoice = choices[Math.floor(Math.random() * choices.length)];
+
+            var result = compare(userChoice, computerChoice);
+
+            var resultDiv = document.getElementById("result");
+            resultDiv.innerHTML = "Du wählst: " + userChoice + "<br>Computer wählt: " + computerChoice + "<br><br>" + result;
+        }
+
+        function compare(choice1, choice2) {
+            if (choice1 === choice2) {
+                return "Unentschieden!";
+            } else if (choice1 === "Schere") {
+                if (choice2 === "Stein") {
+                    return "Computer gewinnt!";
+                } else {
+                    return "Du gewinnst!";
+                }
+            } else if (choice1 === "Stein") {
+                if (choice2 === "Papier") {
+                    return "Computer gewinnt!";
+                } else {
+                    return "Du gewinnst!";
+                }
+            } else if (choice1 === "Papier") {
+                if (choice2 === "Schere") {
+                    return "Computer gewinnt!";
+                } else {
+                    return "Du gewinnst!";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
